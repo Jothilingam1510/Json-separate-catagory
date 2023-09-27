@@ -139,14 +139,12 @@ function separateArrayByCategory(data) {
 
   data.forEach((item) => {
     const { category, ...rest } = item;
-
     if (!result[category]) {
       result[category] = [];
     }
-
     result[category].push(rest);
   });
-
+  console.log(result)
   return result;
 }
 
@@ -154,6 +152,7 @@ function separateArrayByCategory(data) {
 
 
 // function separateArrayByCategory(data) {
+  
 //   return data.reduce((result, item) => {
 //     const { category, ...rest } = item;
 //     if (!result[category]) {
@@ -166,16 +165,18 @@ function separateArrayByCategory(data) {
 
 function App() {
   const separatedData = separateArrayByCategory(data);
-
+  console.log(Object.entries(data));
+  console.log(Object.entries(separatedData))
+  console.log(separatedData)
   return (
     <div className='list'>
-      {Object.entries(separatedData).map(([category, items]) => (
+      {Object.entries(separatedData).map(([category, names]) => (
         <div key={category}>
           <div className='box'>
-          <h2>{category}</h2>
+          <p>{category}</p>
           <ul>
-            {items.map((item, index) => (
-              <li key={index}>{item.name}</li>
+            {names.map((item, index) => (
+              <li className='listss' key={index}>{item.name}</li>
             ))}
           </ul>
           </div>
